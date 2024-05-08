@@ -1,19 +1,29 @@
-import Product from "./components/Product";
-import Nav from "./components/Nav";
-import Home from "./Home";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/product" element={<Product />} />
-      </Routes>
+      <div className="relative min-h-[100vh] pb-20">
+        <Navbar />
+        <main className="max-w-screen-xl mx-auto">
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
