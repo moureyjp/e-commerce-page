@@ -1,39 +1,21 @@
-import { useState } from "react";
-import { productData } from "../data";
-import { Link } from "react-router-dom";
-
-import ProductInformation from "./ProductInformation";
-import Summary from "./Summary";
-import ViewCart from "./ViewCart";
-
-const Product = () => {
-  const [products, setProducts] = useState(productData);
-  const [quantity, setQuantity] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [cartItem, setCartItem] = useState([]);
-  const [isHidden, setIsHidden] = useState(true);
-
-  const toggleCart = () => {
-    setIsHidden((prev) => !prev);
-  };
-
+const Product = ({ product, addToCart }) => {
+  const { id, name, description, price } = product;
   return (
-    <>
-      <h1>E-COMMERCE PRODUCT PAGE</h1>
-      {/* <Summary quantity={quantity} totalPrice={totalPrice} /> */}
-      <ViewCart useCart={{ cartItem, setCartItem }} isHidden={isHidden} />
-      <button onClick={toggleCart}>My Cart</button>
-      {products.map((product) => (
-        <ProductInformation
-          key={product.id}
-          product={product}
-          setQuantity={setQuantity}
-          setTotalPrice={setTotalPrice}
-          setCartItem={setCartItem}
-        />
-      ))}
-    </>
+    <li className="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-red-500 ring-opacity-40 max-w-sm w-full">
+      <div className="p-4">
+        <h3 className="text-lg font-medium mb-2">{name}</h3>
+        <p className="text-gray-600 text-sm mb-4">{description}</p>
+        <div className="flex items-center justify-between">
+          <span className="font-bold text-lg">${price}</span>
+          <button
+            onClick={() => addToCart(id)}
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </li>
   );
 };
-
 export default Product;
