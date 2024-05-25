@@ -1,0 +1,26 @@
+GET http://127.0.0.1:8000/api/products
+
+###
+
+POST http://127.0.0.1:8000/api/products
+Content-Type: application/json
+
+{
+    "name": "Smartwatch",
+    "description": "This is so good!",
+    "price": 100.00
+}
+
+###
+
+PUT http://127.0.0.1:8000/api/products/1
+Content-Type: application/json
+
+{
+    "name": "Smartwatch",
+    "description": "This is so good!",
+    "price": 100.00
+}
+
+### 
+DELETE http://127.0.0.1:8000/api/products/14
