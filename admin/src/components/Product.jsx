@@ -13,9 +13,9 @@ const Product = ({ data }) => {
       <td className="p-4 text-center">{description}</td>
       <td className="p-4 text-center">{price}</td>
       <td className="flex gap-4 justify-center p-4">
-        <Link to={`/product/${id}`}>
+        {/* <Link to={`/product/${id}`}>
           <img src={view} alt="View" className="w-6" />
-        </Link>
+        </Link> */}
         <Link to={`/update-product/${id}`}>
           <img src={edit} alt="Edit" className="w-6" />
         </Link>

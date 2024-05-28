@@ -17,6 +17,16 @@ const UpdateProduct = () => {
   });
   const [isComplete, setIsComplete] = useState(false);
 
+  useEffect(() => {
+    if (datas) {
+      setFormData({
+        name: datas.name,
+        description: datas.description,
+        price: datas.price,
+      });
+    }
+  }, [datas]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -47,12 +57,6 @@ const UpdateProduct = () => {
   if (error) {
     return <div>Error loading product data: {error.message}</div>;
   }
-
-  setFormData({
-    name: datas.name,
-    description: datas.description,
-    price: datas.price,
-  });
 
   return (
     <div className="lg:py-16 md:py-12 py-9 px-4 md:px-6 lg:px-20 xl:px-44">
